@@ -26,19 +26,26 @@ const readCSV = (file: string): Promise<any[]> => {
 };
 
 export async function getSales(req: any, res: any) {
-  const orderData = await readCSV(ordersFilePath);
-  const storeData = await readCSV(storesFilePath);
+  try {
 
-  // Combine information based on 'storeId'
-  const combinedData: any[] = orderData.map((order) => {
-    const storeInfo = storeData.find(
-      (store): boolean => store.storeId === order.storeId
-    );
-    if (storeInfo) {
-      return { ...order, ...storeInfo };
+    const orderData = await readCSV(ordersFilePath);
+    const storeData = await readCSV(storesFilePath);
+    
+    // Combine information based on 'storeId'
+    const combinedData: any[] = orderData.map((order) => {
+      const storeInfo = storeData.find(
+        (store): boolean => store.storeId === order.storeId
+        );
+        if (storeInfo) {
+          return { ...order, ...storeInfo };
+        }
+        return order;
+      });
+      
+      res.json(combinedData);
+    } catch (error) {
+      console.error("Error:", error);
+      // Respond with an error
+      res.status(500).json({ error: "Internal Server Error" });
     }
-    return order;
-  });
-
-  res.json(combinedData);
 }
