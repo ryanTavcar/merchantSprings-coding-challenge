@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
 import styled from "styled-components";
+import SalesTable from "./SalesTable";
 
 const AppWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  background-color: #cccccc;
+  // background-color: #cccccc;
 `;
 
 const AppHeader = styled.header`
@@ -48,7 +48,7 @@ const App = () => {
         <HeaderText>Analytics Dashboard</HeaderText>
         <Username>Welcome, {user ? user.firstName : "Guest"}!</Username>
       </AppHeader>
-      {/** Dashboard - new widgets go here */}
+      <SalesTable />
     </AppWrapper>
   );
 };
