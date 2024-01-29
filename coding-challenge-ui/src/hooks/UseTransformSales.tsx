@@ -10,6 +10,7 @@ const useTransformSales = (sales: Sales[]): TransformedSale[] => {
 
   React.useEffect(() => {
     const transformSales = (sales: Sales[]): TransformedSale[] => {
+        if (!sales) return []
       return sales.map((sale) => {
         return {
           id: sale.Id,

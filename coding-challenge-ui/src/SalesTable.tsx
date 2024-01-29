@@ -79,7 +79,7 @@ const SalesTable = () => {
               color: "#000",
             },
             "& .MuiDataGrid-cellContent": {
-              paddingLeft: "10px",
+              fontWeight: 600,
             },
           }}
         />

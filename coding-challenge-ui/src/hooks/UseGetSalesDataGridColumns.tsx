@@ -24,8 +24,8 @@ function UseGetSalesDataGridColumns(sales: TransformedSale[]): GridColDef[] {
               countryCode={removeLastChar(sales[Number(p.id) - 1].country)}
               svg
               style={{ paddingRight: "10px", height: "20px", width: "20px" }}
-            />{" "}
-            {sales[Number(p.id) - 1].marketplace}
+            />
+            <div style={{fontWeight: 600,}}>{sales[Number(p.id) - 1].marketplace}</div>
           </>
         ),
       },
@@ -46,7 +46,7 @@ function UseGetSalesDataGridColumns(sales: TransformedSale[]): GridColDef[] {
         headerName: "ORDER VALUE",
         flex: 1,
         renderCell: (p: GridRenderCellParams) => (
-          <div style={{ paddingLeft: "50px" }}>
+          <div style={{ paddingLeft: "50px",  fontWeight: 600, }}>
             {sales[Number(p.id) - 1].ordervalue}
           </div>
         ),
@@ -57,7 +57,7 @@ function UseGetSalesDataGridColumns(sales: TransformedSale[]): GridColDef[] {
         headerName: "ITEMS",
         align: "left",
         renderCell: (p: GridRenderCellParams) => (
-          <div style={{ paddingLeft: "15px" }}>
+          <div style={{ paddingLeft: "15px",  fontWeight: 600, }}>
             {sales[Number(p.id) - 1].items}
           </div>
         ),
