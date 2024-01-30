@@ -13,7 +13,7 @@ const UseFetchSales = (): FetchSalesResp => {
     fetch("http://localhost:8080/sales")
       .then((results) => results.json())
       .then((data) => {
-        setFetching(true)
+        setFetching(false)
         setSales(data);
       });
   }, []);
