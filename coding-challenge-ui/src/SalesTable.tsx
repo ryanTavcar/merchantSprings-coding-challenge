@@ -51,41 +51,41 @@ const SalesTable = () => {
   return (
     <Container>
       <StyledHeading>Overdue Orders</StyledHeading>
-      {transformedSales && (
+      <div style={{ height: 371, width: '100%' }}>
         <DataGrid
-          rows={transformedSales}
-          columns={columns}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 5 } },
-          }}
-          pageSizeOptions={[5, 10, 25]}
-          disableColumnMenu
-          hideFooterSelectedRowCount
-          loading={fetching}
-          slots={{
-            baseIconButton: CustomColumnHeaderFilterIconButton,
-            loadingOverlay: LinearProgress,
-          }}
-          sx={{
-            "& .MuiDataGrid-columnSeparator": {
-              display: "none",
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              color: "#AAABB9",
-              backgroundColor: "#f5f6fa",
-            },
-            "& .MuiDataGrid-columnHeaderTitle": {
-              fontWeight: 800,
-            },
-            "& .MuiDataGrid-sortIcon": {
-              color: "#000",
-            },
-            "& .MuiDataGrid-cellContent": {
-              fontWeight: 600,
-            },
-          }}
+        rows={transformedSales}
+        columns={columns}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 5 } },
+        }}
+        pageSizeOptions={[5, 10, 25]}
+        disableColumnMenu
+        hideFooterSelectedRowCount
+        loading={fetching}
+        slots={{
+          baseIconButton: CustomColumnHeaderFilterIconButton,
+          loadingOverlay: LinearProgress,
+        }}
+        sx={{
+          "& .MuiDataGrid-columnSeparator": {
+            display: "none",
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            color: "#AAABB9",
+            backgroundColor: "#f5f6fa",
+          },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            fontWeight: 800,
+          },
+          "& .MuiDataGrid-sortIcon": {
+            color: "#000",
+          },
+          "& .MuiDataGrid-cellContent": {
+            fontWeight: 600,
+          },
+        }}
         />
-      )}
+        </div>
     </Container>
   );
 };
