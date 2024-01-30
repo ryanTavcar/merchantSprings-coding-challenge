@@ -6,6 +6,7 @@ import UseGetSalesDataGridColumns from "./hooks/UseGetSalesDataGridColumns";
 import useTransformSales from "./hooks/UseTransformSales";
 import { DataGrid } from "@mui/x-data-grid";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
+import { LinearProgress } from "@mui/material";
 
 /**
  * Renders a custom column header filter icon button for Mui DataGrid.
@@ -14,7 +15,6 @@ import SwapVertIcon from "@mui/icons-material/SwapVert";
 function CustomColumnHeaderFilterIconButton() {
   return <SwapVertIcon htmlColor="#000" />;
 }
-
 
 const Container = styled.div`
   height: auto;
@@ -44,7 +44,7 @@ const StyledHeading = styled.h3`
  */
 const SalesTable = () => {
   // --------------- Hooks ---------------
-  const sales = UseFetchSales(); // fetch sales data from api
+  const {sales, fetching} = UseFetchSales(); // fetch sales data from api
   const transformedSales = useTransformSales(sales); // transform sales data into workable format
   const columns = UseGetSalesDataGridColumns(transformedSales); // get columns data from Mui DataGrid
 
@@ -61,8 +61,10 @@ const SalesTable = () => {
           pageSizeOptions={[5, 10, 25]}
           disableColumnMenu
           hideFooterSelectedRowCount
+          loading={fetching}
           slots={{
             baseIconButton: CustomColumnHeaderFilterIconButton,
+            loadingOverlay: LinearProgress,
           }}
           sx={{
             "& .MuiDataGrid-columnSeparator": {
